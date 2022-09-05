@@ -3,12 +3,17 @@
 #include <stdio.h> 
 #define tam 4
 void main() {
-  int matriz[tam][tam];
+  int matriz[tam][tam] = {{1,3,2,0},
+  {3,1,0,2},
+  {2,3,0,1},
+  {0,2,1,3}};
+
+  
   int invertida[tam][tam];
   int l ;
   int c ;
 
-  for(l = 0; l <tam ; l++) {
+   for(l = 0; l <tam ; l++) {
       
     for ( c = 0; c <tam; c++) {
           printf("Digite o valor da linha %i e coluna %i  \n", l , c);
@@ -16,14 +21,18 @@ void main() {
   
     }   
   }
-
+ 
   int auxi = tam-1;
   
   
   for(int i = 0; i<tam ; i++) {
+    printf("\n");
     int auxj = tam-1;
-    for(int j = 0 ; j<tam ; j++, auxj--) {
-      invertida[i][j] = matriz[auxi][auxj];
+    for(int j = 0 ; j<tam ; j++) {
+
+      printf("%i", matriz[auxi][auxj]);
+      
+      auxj--;
     }
     
     auxi--;
