@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define TAM 5 
+#define TAM 10 
 
 //5) Que leia os elemntos de uma matriz 10x10 
 //e mostre somente os elementos abaixo da diagonal;
