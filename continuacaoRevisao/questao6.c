@@ -4,7 +4,7 @@
 #define TAM 10
 void main() {
   
-  int matriz[TAM][TAM] = {{3,2,5,7,8,2,7,5,4,9},
+   int matriz[TAM][TAM] = {{3,2,5,7,8,2,7,5,4,9},
                           {1,6,2,9,5,2,7,5,4,9},
                           {8,4,1,0,4,2,7,5,4,9},
                           {2,7,5,4,9,2,7,5,4,9},
@@ -17,22 +17,31 @@ void main() {
                           };
   
   
-  
+  int vetAux[TAM];
   int j = 0;
   
   while(j<TAM) {
-    vetAux[j] = matriz[2][j]; 
+    vetAux[j] = matriz[1][j]; 
     matriz[1][j] = matriz[7][j];
     matriz[7][j] = vetAux[j];
   
   
     vetAux[j] = matriz[3][j]; 
-    matriz[4][j] = matriz[9][j];
+    matriz[3][j] = matriz[9][j];
     matriz[9][j] = vetAux[j];
   
     j++;  
   }
   
+  j = TAM-1;
+  
+  for(int i = 0; i<TAM; i++) {
+    vetAux[i] = matriz[i][i];
+    matriz[i][i] = matriz[i][j] ;
+    matriz[i][j] = vetAux[i];
+    j--;
+  }
+
   
   for(int i = 0; i<TAM; i ++) {
     for(int j =0; j<TAM; j++) {
@@ -41,5 +50,7 @@ void main() {
     printf("\n");
       
   }
+
+  
 }
   
