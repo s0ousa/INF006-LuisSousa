@@ -21,7 +21,9 @@ void main() {
                         {12,4,2,5,7}};
     int vetorMaiores[5];
     int vetorMenores[5];
-   
+    int vetorDiv2[5];
+  
+  
     int l = 0;
     int c = 0;
 
@@ -49,7 +51,9 @@ void main() {
 
         vetorMaiores[c] = maiorAtual;
         vetorMenores[c] = menorAtual;
+        vetorDiv2[c] = (maiorAtual+menorAtual)/2;
 
+       
         c++;
     }
 
@@ -57,4 +61,6 @@ void main() {
     printaVetor(vetorMaiores);
     puts("Vetor menores :");
     printaVetor(vetorMenores);
+    puts("Vetor a+b/2");
+    printaVetor(vetorDiv2);
 }
