@@ -5,16 +5,16 @@ nome, endereço e telefone. Especifique um TAD para armazenar os dados das pesso
 necessárias para inserir, consultar e excluir os dados das pessoas. */
 
 typedef struct {
-  char rua[50];
+  char rua[30];
   int numero;
   char cidade[20];
-  char estado[20];
+  char estado[3];
 }Endereco;
 
 typedef struct {
   char nome[30];
-  Endereco endereco;
-  int telefone[]; 
+  char endereco[60];
+  char telefone[13]; 
 }Pessoa;
 
 void inserirEndereco();
@@ -23,86 +23,99 @@ void consultar() ;
 void limpaString(char string[]);
 void limpaEndereco(Endereco endereco);
 void excluir();
-void print
+
 
 
 void main() {
   
-  Pessoa usuario;
+    Pessoa usuario;
+    
+    int opcao = -1; ;
+    while(opcao!=4) {
+      puts("[1] Inserir");
+      puts("[2] Consultar");
+      puts("[3] Remover");
+      puts("[4] Sair"); 
+
+      scanf("%i", &opcao);
+      
+    switch (opcao){
+     case 1:
+        inserir();
+      break;
   
-  int opcao = -1; ;
-  while(opcao!=4) {
-    puts("[1] Inserir");
-    puts("[2] Consultar");
-    puts("[3] Remover");
-    puts("[4] Sair"); 
+    case 2:
+       consultar();
+     break;
   
-  switch (opcao)
-{
-   case 1:
-      inserir();
+    case 3:
+      excluir();
     break;
-
-  case 2:
-     consultar();
-   break;
-
-  case 3:
-    remover();
-  break;
-
-}  
-
+  
+    }  
+  }
 }
 
   
-void inserirEndereco() {
+/* void inserirEndereco(Pessoa usuario) {
   puts("Digite a rua");
-  scanf("%s", &usuario.endereco.rua);
-
+  fgets(usuario.endereco.rua,30,stdin);
+  getchar();
+  
   puts("Digite o numero da casa");
-  scanf("%i", &usuario.endereco.numero);
-
+  scanf("%i", usuario.endereco.numero);
+  getchar();
+  
   puts("Digite a cidade");
-  scanf("%s", &usuario.endereco.cidade);
-
-  puts("Digite o estado");
-  scanf("%s", &usuario.endereco.estado);
-
+  fgets(usuario.endereco.cidade,20,stdin);
+  getchar();
+  
+  puts("Digite o estado (em sigla Ex: BA, SP)");
+  fgets(usuario.endereco.estado,3,stdin);
+  getchar();
 }
+*/
 
-
-void inserir() {
+void inserir(Pessoa usuario) {
 
   int opcao ;
   puts("O que você deseja inserir?");
   puts("[1] Nome");
-  put("[2] Endereço");
+  puts("[2] Endereço");
   puts("[3] Telefone");
+
+  scanf("%i", &opcao);
   switch(opcao) {
     case 1:
       puts("Digite o nome que você deseja inserir");
-      scanf("%s", usuario.nome);
+      scanf("%s", &usuario.nome);
+      getchar();
     break;
 
     case 2:
-      inserirEndereco();
+   //   inserirEndereco(usuario);
+      puts("Digite o endereco que você deseja inserir");
+      scanf("%s",usuario.endereco);
+      getchar();
     break;
 
     case 3:
-       puts("Digite o nome que você deseja inserir");
-      scanf("%i", usuario.telefone);
+       puts("Digite o numero que você deseja inserir");
+       scanf("%s", &usuario.telefone);
+       getchar();
     break;
   }
 }
 
 
-void consultar() {
+void consultar(Pessoa usuario) {
   int opcao ;
   puts("O que você deseja consultar?");
   puts( "[1] Nome");
   puts("[2] Endereço");
   puts("[3] Telefone");
+
+  scanf("%i", &opcao);
   
   switch(opcao) {
     case 1:
@@ -110,11 +123,11 @@ void consultar() {
     break;
 
     case 2:
-     // puts(usuario.endereco);
+      printf("%s\n" , usuario.endereco);
     break;
 
     case 3:
-      printf("%i\n" , usuario.telefone);
+      printf("%s\n" , usuario.telefone);
     break;
   }
 }
@@ -125,32 +138,38 @@ void limpaString(char string[]) {
   }
 }
 
-void limpaEndereco(Endereco endereco) {
+/* void limpaEndereco(Endereco endereco) {
   limpaString(endereco.rua);
   limpaString(endereco.cidade);
   limpaString(endereco.estado);
   endereco.numero = 0;
-}
+} */
 
 
-void excluir() {
+void excluir(Pessoa usuario) {
 
   int opcao;
   puts("O que você deseja excluir?");
   puts("[1] Nome");
   puts("[2] Endereço");
   puts("[3] Telefone");
+
+  scanf("%i", &opcao);
+  
   switch(opcao) {
     case 1:
       limpaString(usuario.nome);
     break;
 
     case 2:
-      limpaEndereco(usuario.endereco);
+    //  limpaEndereco(usuario.endereco);
     break;
 
     case 3:
-       usuario.telefone = 0;
+        for(int i = 0; usuario.telefone[i]!='\0';i++) {
+           usuario.telefone[i] = 0;   
+        }
+       
     break;
   }
 }
